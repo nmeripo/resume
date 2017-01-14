@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body class="theme-{% if site.resume_theme %}{{ site.resume_theme }}{% endif %}">
+
+    <div class="wrapper" itemscope itemtype="http://schema.org/Person">
+
+      <header class="page-header">
+
+        <!-- You can turn off the avatar in _config.yml by setting to false -->
+        {% if site.resume_avatar == 'true' %}
+        <img src="images/avatar.jpg" alt="my photo" class="avatar" itemprop="image">
+        {% endif %}
+
+        <!-- Your name is defined in the _config.yml file -->
+        <h1 class="header-name" itemprop="name">{{ site.resume_name }}</h1>
+
+        <div class="title-bar">
+
+          <!-- Your title is also defined in the _config.yml file -->
+          <h2 class="header-title" itemprop="jobTitle">{{ site.resume_title }}</h2>
+
+          <!-- This is the markup for the icon links; moved out to an include because it's very verbose, and you shouldn't ever need to edit the markup (unless you want to re-order the icons); if you want to customize which links appear, define them in the _config.yml file -->
+          {% include icon-links.html %}
+        </div>
+
+        <div align = "justify" class="executive-summary" itemprop="description">
+          <p>I'm a graduate student, currently studying Master of Science in Computer Engineering at Arizona State University, with a strong passion for programming. As an engineer, I'm pragmatic and driven in my endeavor to build my ideas, contribute to my team, and learn from other talented engineers. At the end of the day, I want to be a part of innovation, not only so that I can say "I helped build this", but also to facilitate my growth.</p>
+        </div>
+
+        {% if site.resume_looking_for_work == 'yes' %}
+        <a href="mailto:{{ site.resume_contact_email }}" class="contact-button" itemprop="email">Contact me</a>
+        {% elsif site.resume_looking_for_work == 'no' %}
+        <a class="contact-button not-looking">I'm not looking for work right now.</a>
+        {% else %}
+        {% endif %}
+
+      </header>
+
+      {% if site.resume_section_education %}
+      <!-- begin Education -->
+      <section class="content-section">
+
+        <header class="section-header">
+          <h2>Education</h2>
+        </header>
+
+	<div class="resume-item" itemscope itemprop="alumniOf" itemtype="http://schema.org/CollegeOrUniversity">
+          <h3 class="resume-item-title" itemprop="name">Arizona State University</h3>
+          <h4 class="resume-item-details" itemprop="description">Master of Science in Computer Engineering &bull; 2016 &mdash; 2017</h4>
+	  <p class="resume-item-copy">CGPA: 3.54 / 4.</p>
+          <p class="resume-item-copy">Graduate Coursework: Foundations of Algorithms; Distributed Database Systems; Cloud Computing; Statistical
+Machine Learning; Data Mining; Mobile Computing; Random Signal Theory</p>
+        </div>
+
+        <div class="resume-item" itemscope itemprop="alumniOf" itemtype="http://schema.org/CollegeOrUniversity">
+          <h3 class="resume-item-title" itemprop="name">Andhra University</h3>
+          <h4 class="resume-item-details" itemprop="description">Bachelor of Engineering, Electronics and Communication Engineering &bull; 2010 &mdash; 2014</h4>
+	  <p class="resume-item-copy">CGPA: 7.75 / 10.</p>
+          <p class="resume-item-copy">Undergraduate Coursework: Computer Programming and Numerical Methods; Data Structures and Algorithms;
+Computer Networks; Computer Architecture; VLSI and Embedded Systems</p>
+        </div>
+
+      </section>
+      <!-- end Education -->
+      {% endif %}
+
+
+      {% if site.resume_section_experience %}
+      <!-- begin Experience -->
+      <section class="content-section">
+
+        <header class="section-header">
+          <h2>Experience</h2>
+        </header>
+
+        <!-- Duplicate these resume-item elements and edit accordingly for each job you want to add here -->
+        <div class="resume-item" itemscope itemprop="worksFor" itemtype="http://schema.org/Organization">
+          <h3 class="resume-item-title" itemprop="name">Arizona State University</h3>
+          <h4 class="resume-item-details" itemprop="description">Teaching Assistant &bull; Aug, 2016 &mdash; Dec, 2016</h4>
+          <p class="resume-item-copy">Course: Introduction to Engineering. The course work includes teaching the fundamentals of Engineering Design
+process.</p>
+          <ul class="resume-item-list">
+            <li>Taught MATLAB and advised on programming a line follower LEGO robot.</li>
+            <li>Delivered a range of teaching and assessment activities including a report directed towards the learning outcomes of
+the class.</li>
+          </ul>
+          <!-- <p class="resume-item-copy">If you're going to copy paste markup, or edit it, just be sure to keep the appropriate classnames on your new elements for styling purposes.</p> -->
+
+        </div><!-- end of resume-item -->
+
+        <!-- another resume item -->
+        <div class="resume-item" itemscope itemprop="worksFor" itemtype="http://schema.org/Organization">
+          <h3 class="resume-item-title" itemprop="name">Arizona State University</h3>
+          <h4 class="resume-item-details" itemprop="description">Graduate Service Assistant &bull; Aug, 2016 &mdash; Dec, 2016</h4>
+          <p class="resume-item-copy">Graded assignments and debugged students’ C++ code and provided them with feedback.</p>
+
+        </div><!-- end of resume-item -->
+
+      </section>
+      <!-- end Experience -->
+      {% endif %}
+
+      {% if site.resume_section_skills %}
+      <!-- begin Skills -->
+      <section class="content-section">
+
+        <header class="section-header">
+          <h2>Skills</h2>
+        </header>
+
+        <div class="resume-item">
+          <h4 class="resume-item-details">Programming</h4>
+          <p class="resume-item-copy">Java, Python, C/C++, MATLAB, Assembly Language</p>
+        </div>
+
+        <div class="resume-item">
+          <h4 class="resume-item-details">Software Tools</h4>
+          <p class="resume-item-copy">Eclipse, NetBeans, Android Studio, Keil μVision IDE</p>
+        </div>
+
+        <div class="resume-item">
+          <h4 class="resume-item-details">Operating Systems</h4>
+          <p class="resume-item-copy">Arch Linux, Ubuntu 16.04, Windows 10</p>
+        </div>
+
+      </section>
+      <!-- end Skills -->
+      {% endif %}
+
+
+      {% if site.resume_section_projects %}
+      <!-- begin Projects -->
+      <section class="content-section">
+
+        <header class="section-header">
+          <h2>Projects</h2>
+        </header>
+
+        <div class="resume-item">
+          <h3 class="resume-item-title">Geospatial Data Processing Operations using Apache Spark and HDFS</h3>
+          <!--<h4 class="resume-item-details">&bull; 2017 &mdash; Present</h4>-->
+          <p class="resume-item-copy">Proposing to implement Geospatial operations such as convex hull, finding closest pair/farthest pair of points, spatial range, spatial join algorithms in distributed system using Apache Spark and HDFS file system to send and receive data to the system. Also, to provide clear metrics on execution time/CPU Usage/memory utilization/communication cost by varying input data size and number of nodes in distributed system.</p>
+        </div>
+
+        <div class="resume-item">
+          <h3 class="resume-item-title">A Neural Network for Factoid Question Answering Over Paragraphs</h3>
+          <!--<h4 class="resume-item-details">Co-Founder & Organizer &bull; 2007 &mdash; Present</h4>-->
+          <p class="resume-item-copy">Implemented a recursive neural network model that can correctly answer paragraph-length factoid questions. It also involves preprocessing quiz-bowl data and parsing that data to form dependency tree. Using nodes other than leaves as hidden variables to capture not only
+the word semantics correlated with the answer but also the phrase semantics. Then forming cost function using these hidden variables and learning variables using backpropagation (AdaGrad) and then at last training by a weak classifier, able to classify each word matching as a feature and each answer as a multiclass label.</p>
+        </div>
+
+	<div class="resume-item">
+          <h3 class="resume-item-title">Tasque, a smart task management application for Android</h3>
+          <!--<h4 class="resume-item-details">Co-Founder & Organizer &bull; 2007 &mdash; Present</h4>-->
+          <p class="resume-item-copy">Implemented various functionalities such as adding image and setting priority to each task. Performed storing and retrieval of task data using the SQLite database. Included adaptive brightness feature for improved readability. Developed a predictive analysis algorithm which suggests tasks to the user based on the frequency of previously scheduled tasks. Integrated Google Drive synchronization.</p>
+        </div>
+
+	<div class="resume-item">
+          <h3 class="resume-item-title">Twitter as a Corpus for Sentiment Analysis</h3>
+          <!--<h4 class="resume-item-details">Co-Founder & Organizer &bull; 2007 &mdash; Present</h4>-->
+          <p class="resume-item-copy">Designed Naive Bayes classifier and Support Vector Machine models to analyze tweet sentiment; Used Stanford Twitter Corpus as dataset; Various preprocessing steps were introduced to enhance the quality of lexical information. Focused on the changes of portions of the positive, neutral and negative sentiment of tweets in different time of a day.</p>
+        </div>
+
+      </section>
+      <!-- end Projects -->
+      {% endif %}
+
+
+
+      {% if site.resume_section_recognition %}
+      <!-- begin Recognition -->
+      <section class="content-section">
+
+        <header class="section-header">
+          <h2>Recognition</h2>
+        </header>
+
+        <div class="resume-item">
+          <h3 class="resume-item-title" itemprop="award">Government of India, Ministry of Human Resource Development</h3>
+          <h4 class="resume-item-details">National Merit Scholarship &bull; 2010 &mdash; 2014</h4>
+          <p class="resume-item-copy">Awarded for outstanding academic performance during undergraduation</p>
+        </div>
+
+
+      </section>
+      <!-- end Recognition -->
+      {% endif %}
+
+      {% if site.resume_section_associations %}
+      <!-- begin Associations -->
+      <section class="content-section">
+
+        <header class="section-header">
+          <h2>Associations</h2>
+        </header>
+
+        <div class="resume-item">
+          <h3 class="resume-item-title"><a href="http://beerfortheworld.com">Beer for the World</a></h3>
+          <h4 class="resume-item-details">Volunteer &bull; 2008 &mdash; Present</h4>
+          <p class="resume-item-copy">Organized fund drives and participated in fundraising events for the benefit of families in third world countries without proper access to malt beverages.</p>
+        </div>
+
+        <div class="resume-item">
+          <h3 class="resume-item-title">Springfield Nuclear Workers Labor Union</h3>
+          <h4 class="resume-item-details">Member in Good Standin &bull; 1994 &mdash; Present</h4>
+          <p class="resume-item-copy">Founding member of the local nuclear workers labor union.</p>
+        </div>
+
+      </section>
+      <!-- end Associations -->
+      {% endif %}
+
+      {% if site.resume_section_links %}
+      <!-- begin Links -->
+      <section class="content-section">
+
+        <header class="section-header">
+          <h2>Additional Links</h2>
+        </header>
+
+        <div class="resume-item">
+          <ul class="resume-item-list">
+            <li><a href="#">Springfield Poker Club</a></li>
+            <li><a href="#">Springfield Donut Eater's User Group</a></li>
+          </ul>
+        </div>
+
+      </section>
+      <!-- end Links -->
+      {% endif %}
+
+      <footer class="page-footer">
+      </footer>
+
+    </div>
+
+  </body>
+
+</html>
